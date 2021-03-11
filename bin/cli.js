@@ -20,7 +20,7 @@ const listDir = (dir) => {
           newSrc,
           isDir: true,
         });
-        console.log(oldSrc, " -> ", newSrc);
+        console.log(oldSrc, " [dir] -> ", newSrc);
       }
       listDir(path.join(dir, file));
     } else {
@@ -33,7 +33,7 @@ const listDir = (dir) => {
           oldSrc,
           newSrc,
         });
-        console.log(oldSrc, " -> ", newSrc);
+        console.log(oldSrc, " [file] -> ", newSrc);
       }
     }
   });
@@ -55,7 +55,7 @@ function bootstrap() {
   fileList.forEach((f) => {
     fs.renameSync(f.oldSrc, f.newSrc);
   });
-  dirList.forEach((f) => {
+  dirList.reverse().forEach((f) => {
     fs.renameSync(f.oldSrc, f.newSrc);
   });
 }
